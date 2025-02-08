@@ -1,0 +1,13 @@
+
+canvas{
+    border: solid 1px rgb(20, 20, 20)
+}
+
+body {
+    display: flex;               
+    justify-content: center;     
+    align-items: center;         
+    height: 100vh;               
+    background-color: rgb(8, 8, 8);
+}
+
