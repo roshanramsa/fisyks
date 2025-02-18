@@ -1,0 +1,1 @@
+console.log(Math.atan(Math.PI/2));
