@@ -19,6 +19,7 @@ let GLOBAL_GY = 9.8;
 const FAC_OF_DIV = 100;
 const friction = 0.999
 const canvas_shift = {x:canvas.getBoundingClientRect().left, y:canvas.getBoundingClientRect().top};
+console.log(canvas_shift.x, canvas_shift.y)
 
 let tex = "";
 
@@ -233,6 +234,7 @@ function animate(){
         c.font = "48px serif";
         c.fillStyle = "white";
         c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 10, 50);
+        c.fillText(`Pt : ${forcePt.x}, ${forcePt.y}`, 10, 100    )
     }
     c.strokeRect((0 - global_shift.x) / scale, (0 + global_shift.y) / scale, playground.width / scale, playground.height / scale);
 }
@@ -242,7 +244,6 @@ function animate(){
 document.addEventListener("mousedown", function(event){
     if (event.button === 0){
         ext = true;
-        tex = `(${event.clientX - 60},${event.clientY - 30})`;
         forcePt.x = Math.floor((event.clientX - canvas_shift.x + global_shift.x/scale)*scale) ;
         forcePt.y = Math.floor((event.clientY - canvas_shift.y - global_shift.y/scale)*scale);
     }
@@ -252,14 +253,16 @@ document.addEventListener("mousedown", function(event){
         global_marker = {x:event.clientX, y:event.clientY};
         shift = true;
     }
+    tex = `(${forcePt.x},${forcePt.y})`;
 })
 
 document.addEventListener("mousemove", function(event){
-    tex = `(${event.clientX - 60},${event.clientY - 30})`;
+    
     if (ext == true){
         forcePt.x = Math.floor((event.clientX - canvas_shift.x + global_shift.x/scale)*scale) ;
         forcePt.y = Math.floor((event.clientY - canvas_shift.y - global_shift.y/scale)*scale);
     }
+    tex = `(${forcePt.x},${forcePt.y})`;
 
     if (shift){
         global_shift.x += -3*(event.clientX - global_marker.x);
@@ -279,6 +282,7 @@ document.addEventListener("mouseup", function(event){
 })
 
 document.addEventListener("wheel", function(event){
+    event.preventDefault();
     console.log(event.deltaY);
     scale += event.deltaY/138 * 0.3;
 
