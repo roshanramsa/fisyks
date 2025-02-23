@@ -18,6 +18,7 @@ let GLOBAL_GX = 0;;
 let GLOBAL_GY = 9.8;
 const FAC_OF_DIV = 100;
 const friction = 0.999
+const canvas_shift = {x:canvas.getBoundingClientRect().left, y:canvas.getBoundingClientRect().top};
 
 let tex = "";
 
@@ -28,6 +29,7 @@ let forcePt = {x:0,y:0};
 // Variables to store temporary and permananet shift in coordinates
 let global_shift = {x:0, y:0};
 let global_marker = {x:0, y:0};
+
 
 // Values
 let scale = 1;
@@ -40,6 +42,7 @@ let inverted = false;
 let gOn = true;
 let mass_dependecy = false;
 let heat = true;
+
 
 // Classes;
 class Circle{ 
@@ -240,8 +243,8 @@ document.addEventListener("mousedown", function(event){
     if (event.button === 0){
         ext = true;
         tex = `(${event.clientX - 60},${event.clientY - 30})`;
-        forcePt.x = Math.floor((event.clientX - 60 + global_shift.x/scale)*scale) ;
-        forcePt.y = Math.floor((event.clientY - 14 - global_shift.y/scale)*scale);
+        forcePt.x = Math.floor((event.clientX - canvas_shift.x + global_shift.x/scale)*scale) ;
+        forcePt.y = Math.floor((event.clientY - canvas_shift.y - global_shift.y/scale)*scale);
     }
 
     if (event.button === 1){
@@ -254,8 +257,8 @@ document.addEventListener("mousedown", function(event){
 document.addEventListener("mousemove", function(event){
     tex = `(${event.clientX - 60},${event.clientY - 30})`;
     if (ext == true){
-        forcePt.x = Math.floor((event.clientX - 60 + global_shift.x/scale)*scale) ;
-        forcePt.y = Math.floor((event.clientY - 14 - global_shift.y/scale)*scale);
+        forcePt.x = Math.floor((event.clientX - canvas_shift.x + global_shift.x/scale)*scale) ;
+        forcePt.y = Math.floor((event.clientY - canvas_shift.y - global_shift.y/scale)*scale);
     }
 
     if (shift){
