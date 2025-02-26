@@ -231,6 +231,7 @@ function animate(){
         element.draw();
     });
     if(1){
+        c.textAlign = "start"
         c.font = "48px serif";
         c.fillStyle = "white";
         c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 10, 50);
