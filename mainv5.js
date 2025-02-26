@@ -165,7 +165,6 @@ class Circle{
 
         if(this.collided){
             if(!heat) this.fill = colors[this.count%colors.length];
-            console.log(`POS : ${this.pos.x},${this.pos.y}`)
             this.count++;
             this.collided = false;
         }
@@ -207,7 +206,6 @@ class Rigid{
     closestPt(point){
         let val = -1*(point.y - this.p1.y - this.slope*(this.p1.x - point.x)) / (this.slope**2 + 1);
         let h = val*this.slope + point.x;
-        console.log(`::::: H ${h} ||||||||||| PX ${this.p1.x}`);
         let k = val + point.y;
         return {x:h, y:k};
     }
@@ -234,8 +232,7 @@ function animate(){
         c.textAlign = "start"
         c.font = "48px serif";
         c.fillStyle = "white";
-        c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 10, 50);
-        c.fillText(`Pt : ${forcePt.x}, ${forcePt.y}`, 10, 100    )
+        c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 100, 50);
     }
     c.strokeRect((0 - global_shift.x) / scale, (0 + global_shift.y) / scale, playground.width / scale, playground.height / scale);
 }
