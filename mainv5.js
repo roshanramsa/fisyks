@@ -232,7 +232,7 @@ function animate(){
         c.textAlign = "start"
         c.font = "48px serif";
         c.fillStyle = "white";
-        c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 100, 50);
+        c.fillText(`No of objects spawned: ${Circle.dynamics.length}`, 100,50);
     }
     c.strokeRect((0 - global_shift.x) / scale, (0 + global_shift.y) / scale, playground.width / scale, playground.height / scale);
 }
