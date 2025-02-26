@@ -10,7 +10,9 @@
 <hr/>
 <h2>Controls</h2>
 <ul>
-  <li>Left Click - Creates a (default : inward) force at mouse position</li>
+  <li>Middle Click and Drag - Move around/li>
+  <li>Scroll - Zoom In/Out</li>
+  <li>Space - Sets all velocity to 0/li>
   <li>A - Adds more balls with random radius and coefficient of restituition 'e'</li>
   <li>G - Toggles gravity</li>
   <li>H - Toggles heat based / random coloring of balls</li>
